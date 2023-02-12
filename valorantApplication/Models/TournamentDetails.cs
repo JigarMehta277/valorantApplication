@@ -22,4 +22,16 @@ namespace valorantApplication.Models
 
         public ICollection<valorantUser> valorantUsers { get; set; }
     }
+
+    public class TournamentDetailsDto
+    {
+        public int TournamentId { get; set; }
+        public string LatestTournament { get; set; }
+
+        public string LatestAgent { get; set; }
+
+        public int TotalKills { get; set; }
+
+        public string result { get; set; }
+    }
 }
