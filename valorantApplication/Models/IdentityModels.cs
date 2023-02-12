@@ -25,6 +25,10 @@ namespace valorantApplication.Models
         {
         }
 
+        public DbSet<valorantUser> valorantUsers { get; set; }
+
+        public DbSet<TournamentDetails> TournamentDetails { get; set; }
+
         public static ApplicationDbContext Create()
         {
             return new ApplicationDbContext();
