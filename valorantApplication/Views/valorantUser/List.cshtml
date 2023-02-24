@@ -1,0 +1,22 @@
+﻿@model IEnumerable<valorantApplication.Models.ValorantUserDto>
+
+@{
+    ViewBag.Title = "List";
+}
+
+<h2>List</h2>
+
+@foreach (var valorantUser in Model)
+{
+    <h2><a href="/valorantUser/Details/@valorantUser.UserId">@valorantUser.UserName</a></h2>
+    <div>Valorant Id: @valorantUser.ValorantID</div>
+    <div>Most played Agent: @valorantUser.MostPlayedAgent</div>
+    <div>Total gameplay hours: @valorantUser.PlayHours</div>
+    <div>Rate yourself on scale 1-10: @valorantUser.Scale</div>
+    <div>Reason for playing valorant: @valorantUser.Reason</div>
+    <div>Skills you gained over the period of time: @valorantUser.Skill</div>
+    <div>Position you play most: @valorantUser.Position</div>
+    <div>Strategies you use during game: @valorantUser.Strategies</div>
+    <div>Current rank: @valorantUser.Ranks</div>
+
+}

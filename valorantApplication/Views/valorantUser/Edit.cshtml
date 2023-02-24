@@ -1,0 +1,41 @@
+﻿@model valorantApplication.Models.ValorantUserDto
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Edit</h2>
+<form action="/valorantUser/Update/@Model.UserId" method="POST">
+    <div>
+        <label>Name: </label> <input type="text" name="UserName" value="@Model.UserName" />
+    </div>
+    <div>
+        <label>Valorant ID: </label> <input type="text" name="ValorantID" value="@Model.ValorantID" />
+    </div>
+    <div>
+        <label>Most played Agent: </label> <input type="text" name="MostPlayedAgent" value="@Model.MostPlayedAgent" />
+    </div>
+    <div>
+        <label>Total gameplay hours: </label> <input type="text" name="PlayHours" value="@Model.PlayHours" />
+    </div>
+    <div>
+        <label>Rate yourself on scale 1-10: </label> <input type="number" name="Scale" value="@Model.Scale" />
+    </div>
+    <div>
+        <label>Reason for playing valorant: </label> <input type="text" name="Reason" value="@Model.Reason" />
+    </div>
+    <div>
+        <label>Skills you gained over the period of time: </label> <input type="text" name="Skill" value="@Model.Skill" />
+    </div>
+    <div>
+        <label>Position you play most: </label> <input type="text" name="Position" value="@Model.Position" />
+    </div>
+    <div>
+        <label>Strategies you use during game: </label> <input type="text" name="Strategies" value="@Model.Strategies" />
+    </div>
+    <div>
+        <label>Current rank: </label> <input type="text" name="Ranks" value="@Model.Ranks" />
+    </div>
+    <div>
+        <input type="submit" value="Update" />
+    </div>
+</form>

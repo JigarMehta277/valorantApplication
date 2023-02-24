@@ -1,0 +1,20 @@
+﻿@model valorantApplication.Models.ValorantUserDto
+@{
+    ViewBag.Title = "ShowValorantUser";
+}
+
+
+<a href="/valorantUser/List">Go back to list</a>
+<h2>Agent Name: @Model.UserName</h2>
+<div>Valorant Id: @Model.ValorantID</div>
+<div>Most played Agent: @Model.MostPlayedAgent</div>
+<div>Total gameplay hours: @Model.PlayHours</div>
+<div>Rate yourself on scale 1-10: @Model.Scale</div>
+<div>Reason for playing valorant: @Model.Reason</div>
+<div>Skills you gained over the period of time: @Model.Skill</div>
+<div>Position you play most: @Model.Position</div>
+<div>Strategies you use during game: @Model.Strategies</div>
+<div>Current rank: @Model.Ranks</div>
+
+<a href="/valorantUser/DeleteConfirm/@Model.UserId">Delete</a>
+<a href="/valorantUser/Edit/@Model.UserId">Update</a>

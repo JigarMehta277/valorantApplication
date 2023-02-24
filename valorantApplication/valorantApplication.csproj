@@ -185,6 +185,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\TournamentDetailsDataController.cs" />
+    <Compile Include="Controllers\valorantUserController.cs" />
     <Compile Include="Controllers\valorantUsersDataController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -219,6 +220,7 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="jsondata\TournamentDetails.json" />
     <None Include="jsondata\ValorantUser.json" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -267,9 +269,16 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\valorantUser\List.cshtml" />
+    <Content Include="Views\valorantUser\Details.cshtml" />
+    <Content Include="Views\valorantUser\New.cshtml" />
+    <Content Include="Views\valorantUser\Error.cshtml" />
+    <Content Include="Views\valorantUser\DeleteConfirm.cshtml" />
+    <Content Include="Views\valorantUser\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\User\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

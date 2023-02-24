@@ -1,0 +1,43 @@
+﻿
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Create Valorant User</h2>
+
+<form action="/valorantUser/Create" method="POST">
+    <div>
+        <label>Name: </label> <input type="text" name="UserName" />
+    </div>
+    <div>
+        <label>Valorant ID: </label> <input type="text" name="ValorantID" />
+    </div>
+    <div>
+        <label>Most played Agent: </label> <input type="text" name="MostPlayedAgent" />
+    </div>
+    <div>
+        <label>Total gameplay hours: </label> <input type="text" name="PlayHours" />
+    </div>
+    <div>
+        <label>Rate yourself on scale 1-10: </label> <input type="number" name="Scale" />
+    </div>
+    <div>
+        <label>Reason for playing valorant: </label> <input type="text" name="Reason" />
+    </div>
+    <div>
+        <label>Skills you gained over the period of time: </label> <input type="text" name="Skill" />
+    </div>
+    <div>
+        <label>Position you play most: </label> <input type="text" name="Position" />
+    </div>
+    <div>
+        <label>Strategies you use during game: </label> <input type="text" name="Strategies" />
+    </div>
+    <div>
+        <label>Current rank: </label> <input type="text" name="Ranks" />
+    </div>
+    <div>
+        <input type="submit" value="add user" />
+    </div>
+</form>
+
