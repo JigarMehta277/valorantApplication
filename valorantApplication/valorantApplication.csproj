@@ -184,6 +184,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\TournamentDetailsController.cs" />
     <Compile Include="Controllers\TournamentDetailsDataController.cs" />
     <Compile Include="Controllers\valorantUserController.cs" />
     <Compile Include="Controllers\valorantUsersDataController.cs" />
@@ -208,6 +209,8 @@
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\TournamentDetails.cs" />
     <Compile Include="Models\valorantUser.cs" />
+    <Compile Include="Models\ViewModels\DetailsTournamentDetails.cs" />
+    <Compile Include="Models\ViewModels\DetailsValorantUser.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -275,6 +278,12 @@
     <Content Include="Views\valorantUser\Error.cshtml" />
     <Content Include="Views\valorantUser\DeleteConfirm.cshtml" />
     <Content Include="Views\valorantUser\Edit.cshtml" />
+    <Content Include="Views\TournamentDetails\List.cshtml" />
+    <Content Include="Views\TournamentDetails\Details.cshtml" />
+    <Content Include="Views\TournamentDetails\New.cshtml" />
+    <Content Include="Views\TournamentDetails\Edit.cshtml" />
+    <Content Include="Views\TournamentDetails\Error.cshtml" />
+    <Content Include="Views\TournamentDetails\DeleteConfirm.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

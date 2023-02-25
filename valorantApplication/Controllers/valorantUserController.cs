@@ -8,6 +8,7 @@ using System.Diagnostics;
 //using valorantApplication.Migrations;
 using valorantApplication.Models;
 using System.Web.Script.Serialization;
+using valorantApplication.Models.ViewModels;
 
 namespace valorantApplication.Controllers
 {
@@ -19,7 +20,7 @@ namespace valorantApplication.Controllers
         static valorantUserController()
         {
             client = new HttpClient();
-            client.BaseAddress = new Uri("https://localhost:44321/api/valorantUsersData/");
+            client.BaseAddress = new Uri("https://localhost:44321/api/");
         }
 
         // GET: valorantUser/List
@@ -29,7 +30,7 @@ namespace valorantApplication.Controllers
             //Curl https://localhost:44321/api/valorantUsersData/ListvalorantUsers
 
         
-            string url = "ListvalorantUsers";
+            string url = "valorantUsersData/ListvalorantUsers";
             HttpResponseMessage response = client.GetAsync(url).Result;
 
             Debug.WriteLine("The response code is");
@@ -46,11 +47,14 @@ namespace valorantApplication.Controllers
         // GET: valorantUser/Details/5
         public ActionResult Details(int id)
         {
+
+            DetailsValorantUser ViewModel = new DetailsValorantUser();
+
             //objective: communicate with valorantUser data api to retrieve one valorantUser
             //Curl https://localhost:44321/api/valorantUsersData/FindValorantUser/(id)
 
-        
-            string url = "FindValorantUser/"+id;
+
+            string url = "valorantUsersData/FindValorantUser/" + id;
             HttpResponseMessage response = client.GetAsync(url).Result;
 
             //Debug.WriteLine("The response code is");
@@ -60,7 +64,19 @@ namespace valorantApplication.Controllers
             //Debug.WriteLine("valorantUsers recieved: ");
             //Debug.WriteLine(selectedvalorantUsers.UserName);
 
-            return View(selectedvalorantUsers);
+
+            ViewModel.selectedvalorantUsers = selectedvalorantUsers;
+
+            //Show all users in tournament
+
+            url = "TournamentDetailsData/ListTournamentDetailsForValorantUser/" + id;
+            Debug.WriteLine(id);
+            response = client.GetAsync(url).Result;
+            IEnumerable<TournamentDetailsDto> details = response.Content.ReadAsAsync<IEnumerable<TournamentDetailsDto>>().Result;
+
+            ViewModel.ReservedTournamentDetails = details;
+
+            return View(ViewModel);
         }
 
         public ActionResult Error()
@@ -84,7 +100,7 @@ namespace valorantApplication.Controllers
             //Debug.WriteLine(ValorantUser.UserName);
             //objective add a new valorant user into our system using the API
             //Curl -H"Content-Type:application/json" -d @ValorantUser.json https://localhost:44321/api/valorantUsersData/AddValorantUser
-            string url = "AddValorantUser";
+            string url = "valorantUsersData/AddValorantUser";
 
             
             string jsonpayload = jss.Serialize(ValorantUser);
@@ -113,24 +129,24 @@ namespace valorantApplication.Controllers
             //Curl https://localhost:44321/api/valorantUsersData/FindValorantUser/(id)
 
 
-            string url = "FindValorantUser/" + id;
+            string url = "valorantUsersData/FindValorantUser/" + id;
             HttpResponseMessage response = client.GetAsync(url).Result;
 
-            //Debug.WriteLine("The response code is");
-            //Debug.WriteLine(response.StatusCode);
+            Debug.WriteLine("The response code is");
+            Debug.WriteLine(response.StatusCode);
 
             ValorantUserDto selectedvalorantUsers = response.Content.ReadAsAsync<ValorantUserDto>().Result;
-            //Debug.WriteLine("valorantUsers recieved: ");
-            //Debug.WriteLine(selectedvalorantUsers.UserName);
+            Debug.WriteLine("valorantUsers recieved: ");
+            Debug.WriteLine(selectedvalorantUsers.UserName);
 
             return View(selectedvalorantUsers);
         }
 
-        // POST: valorantUser/Update/5
+        // POST: valorantUser/Update/id
         [HttpPost]
         public ActionResult Update(int id, valorantUser ValorantUser)
         {
-            string url = "UpdateValorantUser/"+id;
+            string url = "valorantUsersData/UpdateValorantUser/" + id;
             
 
 
@@ -142,6 +158,7 @@ namespace valorantApplication.Controllers
 
             content.Headers.ContentType.MediaType = "application/json";
             HttpResponseMessage response = client.PostAsync(url, content).Result;
+            Debug.WriteLine(content);
             if (response.IsSuccessStatusCode)
             {
                 return RedirectToAction("List");
@@ -152,14 +169,14 @@ namespace valorantApplication.Controllers
             }
         }
 
-        // GET: valorantUser/DeleteConfirm/5
+        // GET: valorantUser/DeleteConfirm/id
         public ActionResult DeleteConfirm(int id)
         {
             //objective: communicate with valorantUser data api to retrieve one valorantUser
             //Curl https://localhost:44321/api/valorantUsersData/FindValorantUser/(id)
 
 
-            string url = "FindValorantUser/" + id;
+            string url = "valorantUsersData/FindValorantUser/" + id;
             HttpResponseMessage response = client.GetAsync(url).Result;
 
             //Debug.WriteLine("The response code is");
@@ -172,7 +189,7 @@ namespace valorantApplication.Controllers
             return View(selectedvalorantUsers);
         }
 
-        // POST: valorantUser/Delete/5
+        // POST: valorantUser/Delete/id
         [HttpPost]
         public ActionResult Delete(int id, valorantUser ValorantUser)
         {
@@ -180,7 +197,7 @@ namespace valorantApplication.Controllers
             //Debug.WriteLine(ValorantUser.UserName);
             //objective add a new valorant user into our system using the API
             //Curl -H"Content-Type:application/json" -d @ValorantUser.json https://localhost:44321/api/valorantUsersData/AddValorantUser
-            string url = "DeletevalorantUser/" + id;
+            string url = "valorantUsersData/DeletevalorantUser/" + id;
 
 
             string jsonpayload = jss.Serialize(ValorantUser);

@@ -1,0 +1,15 @@
+﻿@model valorantApplication.Models.TournamentDetailsDto
+@{
+    ViewBag.Title = "DeleteConfirm";
+}
+
+<h2>Are you sure you want to delete?</h2>
+<a href="/TournamentDetails/List">Go back to list</a>
+<h2>Latest Tournament: @Model.LatestTournament</h2>
+<div>Latest agent: @Model.LatestAgent</div>
+<div>Total in-game kills: @Model.TotalKills</div>
+<div>Game result: @Model.result</div>
+
+<form action="/TournamentDetails/Delete/@Model.TournamentId" method="POST">
+    <input type="submit" value="Delete" />
+</form>

@@ -46,6 +46,45 @@ namespace valorantApplication.Controllers
             return ValorantUserDtos;
         }
 
+
+        /// <summary>
+        /// Returns all the valorantusers for tournamnet details
+        /// </summary>
+        /// <returns>
+        /// HEADER: 200(OK)
+        /// CONTENT: all the valorant users in the database
+        /// </returns>
+        /// <param name="id">valorant user primary key</param>
+        /// <returns></returns>
+        // GET: api/valorantUsersData/ListvalorantUsersForTournamentDetails/1
+        [HttpGet]
+        [ResponseType(typeof(ValorantUserDto))]
+        public IEnumerable<ValorantUserDto> ListvalorantUsersForTournamentDetails(int id)
+        {
+            List<valorantUser> ValorantUsers = db.valorantUsers.Where(
+                v=>v.TournamentDetails.Any(
+                    t=>t.TournamentId == id)
+                    ).ToList();
+            List<ValorantUserDto> ValorantUserDtos = new List<ValorantUserDto>();
+
+            ValorantUsers.ForEach(a => ValorantUserDtos.Add(new ValorantUserDto()
+            {
+                UserId = a.UserId,
+                UserName = a.UserName,
+                ValorantID = a.ValorantID,
+                MostPlayedAgent = a.MostPlayedAgent,
+                PlayHours = a.PlayHours,
+                Scale = a.Scale,
+                Reason = a.Reason,
+                Skill = a.Skill,
+                Position = a.Position,
+                Strategies = a.Strategies,
+                Ranks = a.Ranks
+            }));
+
+            return ValorantUserDtos;
+        }
+
         // GET: api/valorantUsersData/FindValorantUser/5
         [ResponseType(typeof(valorantUser))]
         [HttpGet]

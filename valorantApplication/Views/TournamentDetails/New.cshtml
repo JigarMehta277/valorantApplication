@@ -1,0 +1,25 @@
+﻿
+@{
+    ViewBag.Title = "New";
+}
+
+<h2>New Tournamnet Details</h2>
+
+<form action="/TournamentDetails/Create" method="POST">
+    <div>
+        <label>Enter name of latest tournamnet played: </label> <input type="text" name="LatestTournament" />
+    </div>
+    <div>
+        <label>Latest agent played: </label> <input type="text" name="LatestAgent" />
+    </div>
+    <div>
+        <label>Total kills got during game: </label> <input type="text" name="TotalKills" />
+    </div>
+    <div>
+        <label>Result of the game: </label> <input type="text" name="result" />
+    </div>
+    <div>
+        <input type="submit" value="add tournament details" />
+    </div>
+</form>
+

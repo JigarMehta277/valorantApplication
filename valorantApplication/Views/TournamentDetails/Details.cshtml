@@ -1,0 +1,23 @@
+﻿@model valorantApplication.Models.ViewModels.DetailsTournamentDetails
+@{
+    ViewBag.Title = "Details";
+}
+
+
+<a href="/TournamentDetails/List">Go back to list</a>
+<h2>@Model.selectedTournamentDetails.LatestTournament</h2>
+<div>Latest agent played: @Model.selectedTournamentDetails.LatestAgent</div>
+<div>Total kills got: @Model.selectedTournamentDetails.TotalKills</div>
+<div>Game result: @Model.selectedTournamentDetails.result</div>
+
+<a href="/TournamentDetails/DeleteConfirm/@Model.selectedTournamentDetails.TournamentId">Delete</a>
+<a href="/TournamentDetails/Edit/@Model.selectedTournamentDetails.TournamentId">Update</a>
+
+<div>
+    <h3>Valorant Users Responsible for @Model.selectedTournamentDetails.LatestTournament</h3>
+
+    @foreach(var valorantUser in Model.ResponsibleValorantUsers)
+            {
+                <a href="/valorantUser/Details/@valorantUser.UserId">@valorantUser.UserName</a><br />
+            }
+</div>

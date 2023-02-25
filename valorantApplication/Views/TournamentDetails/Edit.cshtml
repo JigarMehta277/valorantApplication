@@ -1,0 +1,27 @@
+﻿@model valorantApplication.Models.TournamentDetailsDto
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Edit</h2>
+
+<form action="/TournamentDetails/Update/@Model.TournamentId" method="POST">
+    <div>
+
+        <label>Latest tournament played: </label> <input type="text" name="LatestTournament" value="@Model.LatestTournament" />
+    </div>
+    <div>
+        <label>Latest agent played: </label> <input type="text" name="LatestAgent" value="@Model.LatestAgent" />
+    </div>
+    <div>
+        <label>Total in game kills: </label> <input type="text" name="TotalKills" value="@Model.TotalKills" />
+    </div>
+    <div>
+        <input type="hidden" name="TournamentId" value="@Model.TournamentId" />
+        <label>Game result: </label> <input type="text" name="result" value="@Model.result" />
+    </div>
+    <div>
+        <input type="submit" value="Update" />
+    </div>
+</form>
+

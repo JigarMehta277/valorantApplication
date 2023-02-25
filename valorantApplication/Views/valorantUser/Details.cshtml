@@ -1,20 +1,29 @@
-﻿@model valorantApplication.Models.ValorantUserDto
+﻿@model valorantApplication.Models.ViewModels.DetailsValorantUser
 @{
     ViewBag.Title = "ShowValorantUser";
 }
 
 
 <a href="/valorantUser/List">Go back to list</a>
-<h2>Agent Name: @Model.UserName</h2>
-<div>Valorant Id: @Model.ValorantID</div>
-<div>Most played Agent: @Model.MostPlayedAgent</div>
-<div>Total gameplay hours: @Model.PlayHours</div>
-<div>Rate yourself on scale 1-10: @Model.Scale</div>
-<div>Reason for playing valorant: @Model.Reason</div>
-<div>Skills you gained over the period of time: @Model.Skill</div>
-<div>Position you play most: @Model.Position</div>
-<div>Strategies you use during game: @Model.Strategies</div>
-<div>Current rank: @Model.Ranks</div>
+<h2>Agent Name: @Model.selectedvalorantUsers.UserName</h2>
+<div>Valorant Id: @Model.selectedvalorantUsers.ValorantID</div>
+<div>Most played Agent: @Model.selectedvalorantUsers.MostPlayedAgent</div>
+<div>Total gameplay hours: @Model.selectedvalorantUsers.PlayHours</div>
+<div>Rate yourself on scale 1-10: @Model.selectedvalorantUsers.Scale</div>
+<div>Reason for playing valorant: @Model.selectedvalorantUsers.Reason</div>
+<div>Skills you gained over the period of time: @Model.selectedvalorantUsers.Skill</div>
+<div>Position you play most: @Model.selectedvalorantUsers.Position</div>
+<div>Strategies you use during game: @Model.selectedvalorantUsers.Strategies</div>
+<div>Current rank: @Model.selectedvalorantUsers.Ranks</div>
 
-<a href="/valorantUser/DeleteConfirm/@Model.UserId">Delete</a>
-<a href="/valorantUser/Edit/@Model.UserId">Update</a>
+<a href="/valorantUser/DeleteConfirm/@Model.selectedvalorantUsers.UserId">Delete</a>
+<a href="/valorantUser/Edit/@Model.selectedvalorantUsers.UserId">Update</a>
+
+
+<div>
+    <h3>Responsible for:</h3>
+    @foreach (var tournamentDetails in Model.ReservedTournamentDetails)
+    {
+        <a href="/valorantUser/Details/@tournamentDetails.TournamentId">@tournamentDetails.LatestTournament</a><br />
+    }
+</div>

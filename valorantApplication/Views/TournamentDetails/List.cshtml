@@ -1,0 +1,17 @@
+﻿@model IEnumerable<valorantApplication.Models.TournamentDetailsDto>
+@{
+    ViewBag.Title = "List";
+}
+
+<h2>List</h2>
+
+@foreach (var tournamentDetails in Model)
+{
+    <h2><a href="/TournamentDetails/Details/@tournamentDetails.TournamentId">@tournamentDetails.LatestTournament</a></h2>
+    <div>Latest agent played: @tournamentDetails.LatestAgent</div>
+    <div>Total in game kills: @tournamentDetails.TotalKills</div>
+    <div>Result of game: @tournamentDetails.result</div>
+}
+
+<a href="/TournamentDetails/New">Add Tournament Details</a>
+

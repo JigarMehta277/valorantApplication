@@ -35,6 +35,41 @@ namespace valorantApplication.Controllers
             return TournamentDetailsDtos;
         }
 
+        /// <summary>
+        /// Gathers information about tournaments details related to a particular valorant user.
+        /// </summary>
+        /// <returns>
+        /// HEADER: 200(OK)
+        /// CONTENT:
+        /// </returns>
+        /// <param name="id">valorant user id</param>
+        /// <example>
+        /// GET: api/TournamentDetailsData/ListTournamentDetailsForValorantUser/3
+        /// </example>
+        /// <returns></returns>
+        [HttpGet]
+        [ResponseType(typeof(TournamentDetailsDto))]
+        public IHttpActionResult ListTournamentDetailsForValorantUser(int id)
+        {
+            //all tournament details that have valorant user which match with our ID.
+            List<TournamentDetails> TournamentDetail = db.TournamentDetails.Where(
+                a=>a.valorantUsers.Any(
+                   v=>v.UserId==id    
+                )).ToList();
+            List<TournamentDetailsDto> TournamentDetailsDtos = new List<TournamentDetailsDto>();
+
+            TournamentDetail.ForEach(a => TournamentDetailsDtos.Add(new TournamentDetailsDto()
+            {
+                TournamentId = a.TournamentId,
+                LatestTournament = a.LatestTournament,
+                LatestAgent = a.LatestAgent,
+                TotalKills = a.TotalKills,
+                result = a.result
+            }));
+
+            return Ok(TournamentDetailsDtos);
+        }
+
         // GET: api/TournamentDetailsData/FindTournamentDetails/5
         [ResponseType(typeof(TournamentDetails))]
         [HttpGet]
