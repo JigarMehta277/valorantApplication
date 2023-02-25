@@ -4,21 +4,25 @@
     ViewBag.Title = "List";
 }
 
-<h2>List</h2>
+<h1 id="valorantUserTitle">Valorant Users</h1>
+<a href="/valorantUser/New" id="addNewUser">Add User</a>
+<link rel="stylesheet" href="~/Content/Style.css" />
+<div class="valorantUserContainer">
+    @foreach (var valorantUser in Model)
+    {
+        <div class="valorantUserItem">
+            <h2><a href="/valorantUser/Details/@valorantUser.UserId" id="valorantUserName">@valorantUser.UserName</a></h2>
+            <div class="userDetails">Valorant Id: @valorantUser.ValorantID</div>
+            <div class="userDetails">Most played Agent: @valorantUser.MostPlayedAgent</div>
+            <div class="userDetails">Total gameplay hours: @valorantUser.PlayHours</div>
+            <div class="userDetails">Rate yourself on scale 1-10: @valorantUser.Scale</div>
+            <div class="userDetails">Reason for playing valorant: @valorantUser.Reason</div>
+            <div class="userDetails">Skills you gained over the period of time: @valorantUser.Skill</div>
+            <div class="userDetails">Position you play most: @valorantUser.Position</div>
+            <div class="userDetails">Strategies you use during game: @valorantUser.Strategies</div>
+            <div class="userDetails">Current rank: @valorantUser.Ranks</div>
+        </div>
+    }
+</div>
 
-@foreach (var valorantUser in Model)
-{
-    <h2><a href="/valorantUser/Details/@valorantUser.UserId">@valorantUser.UserName</a></h2>
-    <div>Valorant Id: @valorantUser.ValorantID</div>
-    <div>Most played Agent: @valorantUser.MostPlayedAgent</div>
-    <div>Total gameplay hours: @valorantUser.PlayHours</div>
-    <div>Rate yourself on scale 1-10: @valorantUser.Scale</div>
-    <div>Reason for playing valorant: @valorantUser.Reason</div>
-    <div>Skills you gained over the period of time: @valorantUser.Skill</div>
-    <div>Position you play most: @valorantUser.Position</div>
-    <div>Strategies you use during game: @valorantUser.Strategies</div>
-    <div>Current rank: @valorantUser.Ranks</div>
 
-}
-
-<a href="/valorantUser/New">Add User</a>

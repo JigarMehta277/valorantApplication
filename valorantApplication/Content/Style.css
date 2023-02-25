@@ -1,0 +1,61 @@
+﻿.valorantUserContainer {
+    display: flex;
+    gap:20px;
+    flex-flow:row wrap;
+    justify-content:space-between;
+}
+
+body {
+    background-image: url("/images/background.jpg");
+}
+
+#valorantUserTitle {
+    text-align: center;
+}
+
+#valorantUserName {
+    color:black;
+}
+
+.userDetails {
+    color: black;
+}
+
+#addNewUser {
+background-color: red;
+color: white;
+padding: 1em 1.5em;
+text-decoration: none;
+text-transform: uppercase;
+border-radius:10px;
+}
+
+.tournamentDetailsContainer {
+    display: flex;
+    gap: 20px;
+    flex-flow: row wrap;
+    justify-content: space-between;
+}
+
+#tournamentTitle {
+    color:black;
+}
+
+#addTournamentDetails {
+    background-color: red;
+    color: white;
+    padding: 1em 1.5em;
+    text-decoration: none;
+    text-transform: uppercase;
+    border-radius: 10px;
+}
+
+#touurnamentHeading {
+    margin-bottom:20px;
+}
+
+.tourDetails{
+    color:black;
+}
+
+

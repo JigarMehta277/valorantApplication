@@ -3,15 +3,22 @@
     ViewBag.Title = "List";
 }
 
-<h2>List</h2>
+<h1 id="touurnamentHeading">Tournament Details</h1>
+<a href="/TournamentDetails/New" id="addTournamentDetails">Add Tournament Details</a>
+<link rel="stylesheet" href="~/Content/Style.css" />
 
-@foreach (var tournamentDetails in Model)
-{
-    <h2><a href="/TournamentDetails/Details/@tournamentDetails.TournamentId">@tournamentDetails.LatestTournament</a></h2>
-    <div>Latest agent played: @tournamentDetails.LatestAgent</div>
-    <div>Total in game kills: @tournamentDetails.TotalKills</div>
-    <div>Result of game: @tournamentDetails.result</div>
-}
+<div class="tournamentDetailsContainer">
+    @foreach (var tournamentDetails in Model)
+    {
+        <div class="tournamentDetailsItem">
+            <h2><a href="/TournamentDetails/Details/@tournamentDetails.TournamentId" id="tournamentTitle">@tournamentDetails.LatestTournament</a></h2>
+            <div class="tourDetails">Latest agent played: @tournamentDetails.LatestAgent</div>
+            <div class="tourDetails">Total in game kills: @tournamentDetails.TotalKills</div>
+            <div class="tourDetails">Result of game: @tournamentDetails.result</div>
+        </div>  
+    }
+</div>
 
-<a href="/TournamentDetails/New">Add Tournament Details</a>
+
+
 

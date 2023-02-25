@@ -5,7 +5,7 @@
 
 
 <a href="/valorantUser/List">Go back to list</a>
-<h2>Agent Name: @Model.selectedvalorantUsers.UserName</h2>
+<h2>@Model.selectedvalorantUsers.UserName</h2>
 <div>Valorant Id: @Model.selectedvalorantUsers.ValorantID</div>
 <div>Most played Agent: @Model.selectedvalorantUsers.MostPlayedAgent</div>
 <div>Total gameplay hours: @Model.selectedvalorantUsers.PlayHours</div>
@@ -21,9 +21,9 @@
 
 
 <div>
-    <h3>Responsible for:</h3>
+    <h3>Tournaments played:</h3>
     @foreach (var tournamentDetails in Model.ReservedTournamentDetails)
     {
-        <a href="/valorantUser/Details/@tournamentDetails.TournamentId">@tournamentDetails.LatestTournament</a><br />
+        <a href="/TournamentDetails/Details/@tournamentDetails.TournamentId">@tournamentDetails.LatestTournament</a><br />
     }
 </div>
